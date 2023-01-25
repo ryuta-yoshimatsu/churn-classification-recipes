@@ -32,3 +32,12 @@ jobs:
       - name: Install pip
         run: |
           python -m pip install --upgrade pip
+
+      - name: Install dependencies and project in dev mode
+        run: |
+          pip install -r unit-requirements.txt
+          pip install -e .
+          - name: Run unit tests
+            run: |
+              echo "Launching unit tests"
+              pytest tests/unit
