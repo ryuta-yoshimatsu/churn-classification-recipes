@@ -38,4 +38,4 @@ jobs:
       - name: Run unit tests
         run: |
           echo "Launching unit tests"
-          pytest tests/unit
+          pytest tests
