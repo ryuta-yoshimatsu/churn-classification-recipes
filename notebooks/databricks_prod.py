@@ -14,6 +14,6 @@
 
 from mlflow.recipes import Recipe
 
-r = Recipe(profile="databricks_staging")
+r = Recipe(profile="databricks_prod")
 
 r.run()

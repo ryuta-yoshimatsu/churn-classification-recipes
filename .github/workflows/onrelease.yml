@@ -37,7 +37,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Run integration tests
+      - name: Run prod pipeline
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: notebooks/databricks_prod.py
