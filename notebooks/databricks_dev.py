@@ -21,7 +21,7 @@
 
 from mlflow.recipes import Recipe
 
-r = Recipe(profile="databricks")
+r = Recipe(profile="databricks_dev")
 
 # COMMAND ----------
 
