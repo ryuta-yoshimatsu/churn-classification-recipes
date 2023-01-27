@@ -45,7 +45,6 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: notebooks/databricks_prod.py
-          git-commit: ${{ github.event.pull_request.head.sha }}
           new-cluster-json: >
             {
               "num_workers": 1,
