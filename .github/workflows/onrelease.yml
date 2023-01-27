@@ -5,7 +5,6 @@ on:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-
 jobs:
   release-pipeline:
 
@@ -40,7 +39,7 @@ jobs:
       - name: Run prod pipeline
         uses: databricks/run-notebook@v0
         with:
-          local-notebook-path: notebooks/databricks_prod.py
+          local-notebook-path: notebooks/databricks_staging.py
           git-commit: ${{ github.event.pull_request.head.sha }}
           new-cluster-json: >
             {
@@ -61,4 +60,3 @@ jobs:
             Release for version ${{ github.ref }}.
           draft: false
           prerelease: false
-
