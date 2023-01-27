@@ -8,14 +8,14 @@ on:
 jobs:
   release-pipeline:
 
-    environment: "PROD"
+    environment: "STAGING"
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
 
     env:
-      DATABRICKS_HOST: ${{ secrets.DATABRICKS_PROD_HOST }}
-      DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_PROD_TOKEN }}
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_STAGING_HOST }}
+      DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_STAGING_TOKEN }}
 
     steps:
       - uses: actions/checkout@v1
@@ -36,10 +36,15 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Run prod pipeline
+      - name: Run unit tests
+        run: |
+          echo "Launching unit tests"
+          pytest tests
+
+      - name: Run integration tests
         uses: databricks/run-notebook@v0
         with:
-          local-notebook-path: notebooks/databricks_prod.py
+          local-notebook-path: notebooks/databricks_staging.py
           git-commit: ${{ github.event.pull_request.head.sha }}
           new-cluster-json: >
             {
@@ -47,16 +52,3 @@ jobs:
               "spark_version": "12.1.x-cpu-ml-scala2.12",
               "node_type_id": "i3.xlarge"
             }
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: |
-            Release for version ${{ github.ref }}.
-          draft: false
-          prerelease: false
