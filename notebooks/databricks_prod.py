@@ -6,9 +6,6 @@
 # MAGIC
 
 # COMMAND ----------
-
 from mlflow.recipes import Recipe
-
 r = Recipe(profile="databricks_prod")
-
 r.run()

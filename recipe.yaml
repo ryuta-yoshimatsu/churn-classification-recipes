@@ -1,6 +1,6 @@
 # `recipe.yaml` is the main configuration file for an MLflow Recipe.
 # Required recipe parameters should be defined in this file with either concrete values or
-# variables such as {{ INGEST_DATA_LOCATION }}.
+# variables such as {{ INGEST_DATA_LOCATION }}. 
 #
 # Variables must be dereferenced in a profile YAML file, located under `profiles/`.
 # See `profiles/local.yaml` for example usage. One may switch among profiles quickly by
