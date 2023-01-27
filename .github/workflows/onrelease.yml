@@ -10,14 +10,14 @@ on:
 jobs:
   release-pipeline:
 
-    environment: "STAGING"
+    environment: "PROD"
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
 
     env:
-      DATABRICKS_HOST: ${{ secrets.DATABRICKS_STAGING_HOST }}
-      DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_STAGING_TOKEN }}
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_PROD_HOST }}
+      DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_PROD_TOKEN }}
 
     steps:
       - uses: actions/checkout@v1
@@ -46,7 +46,7 @@ jobs:
       - name: Run integration tests
         uses: databricks/run-notebook@v0
         with:
-          local-notebook-path: notebooks/databricks_staging.py
+          local-notebook-path: notebooks/databricks_prod.py
           git-commit: ${{ github.event.pull_request.head.sha }}
           new-cluster-json: >
             {
