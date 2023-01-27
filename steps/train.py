@@ -17,4 +17,9 @@ def estimator_fn(estimator_params: Dict[str, Any] = None) -> Any:
     # FIXME::OPTIONAL: return a scikit-learn-compatible classification estimator with fine-tuned
     #                  hyperparameters.
 
-    raise NotImplementedError
+    if estimator_params is None:
+        estimator_params = {}
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.ensemble import RandomForestClassifier
+
+    return RandomForestClassifier(random_state=42, **estimator_params)
