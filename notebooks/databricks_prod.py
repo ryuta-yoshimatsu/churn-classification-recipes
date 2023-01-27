@@ -6,9 +6,10 @@
 # MAGIC
 
 # COMMAND ----------
+# MAGIC %pip install mlflow
+# MAGIC %pip install -r ../requirements.txt
 
+# COMMAND ----------
 from mlflow.recipes import Recipe
-
 r = Recipe(profile="databricks_prod")
-
 r.run()
