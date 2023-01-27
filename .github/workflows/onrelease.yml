@@ -20,7 +20,8 @@ jobs:
       DATABRICKS_TOKEN:  ${{ secrets.DATABRICKS_PROD_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
@@ -30,9 +31,6 @@ jobs:
       - name: Install pip
         run: |
           python -m pip install --upgrade pip
-
-      - name: Checkout repo
-        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: |
