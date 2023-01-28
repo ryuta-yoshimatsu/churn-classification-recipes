@@ -2,9 +2,7 @@ name: Release pipeline
 
 on:
   push:
-    branches:
-      - main
-    tags-ignore:
+    tags:
       - 'v*' # this tag type is used for release pipelines
 
 jobs:
