@@ -19,9 +19,9 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          repository: ryuta-databricks/churn-classification-recipes
+          ref: main
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
