@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          path: main
+          repository: ryuta-databricks/churn-classification-recipes
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
