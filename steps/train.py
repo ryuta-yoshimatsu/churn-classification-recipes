@@ -20,8 +20,8 @@ def estimator_fn(estimator_params: Dict[str, Any] = None) -> Any:
     if estimator_params is None:
         estimator_params = {}
 
-    from sklearn.linear_model import SGDClassifier
-    return SGDClassifier(random_state=42, **estimator_params)
+    #from sklearn.linear_model import SGDClassifier
+    #return SGDClassifier(random_state=42, **estimator_params)
 
-    #from sklearn.ensemble import RandomForestClassifier
-    #return RandomForestClassifier(random_state=42, **estimator_params)
+    from sklearn.ensemble import RandomForestClassifier
+    return RandomForestClassifier(random_state=42, **estimator_params)
