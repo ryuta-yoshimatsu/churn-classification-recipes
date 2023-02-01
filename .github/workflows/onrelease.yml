@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - 'v*' # this tag type is used for release pipelines
-    branches:
-      - main
 
 jobs:
   release-pipeline:
@@ -21,9 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          ref: main
+        uses: actions/checkout@v2
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
@@ -43,7 +39,7 @@ jobs:
           echo "Launching unit tests"
           pytest tests
 
-      - name: Run integration tests
+      - name: Run production pipeline
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: notebooks/databricks_prod.py
