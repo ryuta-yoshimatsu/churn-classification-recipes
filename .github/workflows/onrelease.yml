@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v*' # this tag type is used for release pipelines
+    branches:
+      - main
 
 jobs:
   release-pipeline:
@@ -45,6 +47,7 @@ jobs:
         uses: databricks/run-notebook@v0
         with:
           local-notebook-path: notebooks/databricks_prod.py
+          git-commit: ${{ github.event.push.head.sha }}
           new-cluster-json: >
             {
               "num_workers": 1,
